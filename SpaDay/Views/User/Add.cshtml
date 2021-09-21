@@ -1,0 +1,19 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<p>@ViewBag.ErrorMessage</p> @*dispaly error message if password don't match*@
+
+<form method="post" action="/user">
+    <label for="username">Username</label><br />
+    <input type="text" id="username" name="@ViewBag.Username" /><br />
+    <label for="email">Email</label><br>
+    <input type="email" id="email" name="@ViewBag.Email" /><br />
+    <label for="password">Password</label><br />
+    <input type="password" id="password" name="@ViewBag.Password" /><br />
+
+    <input type="submit" value="submit" />
+</form>
+
