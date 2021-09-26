@@ -27,20 +27,22 @@ namespace SpaDay.Controllers
 
         [HttpPost]
         [Route("/user")]
-        public IActionResult SubmitAddUserForm(User newUser, string verify)
+        public IActionResult SubmitAddUserForm(AddUserViewModel addUserViewModel) //Take in the instance of AddUserViewModel as a parameter.
         {
-            if (newUser.Password == verify)
+            if (ModelState.IsValid) // make sure conditions outlined using validation attributes have been met
             {
-                ViewBag.user = newUser;
-                return View("Index");
+                User newUser = new User
+                {
+                    //check that the value of Password is equal to VerifyPassword
+                    Username = addUserViewModel.Username,
+                    Email = addUserViewModel.Email,
+                    Password = addUserViewModel.VerifyPassword,
+                };
+
+                //create an instance of User and pass it to the User / Index.cshtml view
+                return View("Index", newUser);
             }
-            else
-            {
-                ViewBag.error = "Passwords do not match! Try again!";
-                ViewBag.userName = newUser.Username;
-                ViewBag.eMail = newUser.Email;
-                return View("Add");
-            }
+                return View("Add", addUserViewModel); // reload the form if passwords do not match
         }
 
     }
