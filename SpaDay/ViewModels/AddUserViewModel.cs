@@ -13,10 +13,10 @@ namespace SpaDay.ViewModels
         [StringLength(20, MinimumLength = 6, ErrorMessage = "Passowrd must contain 6 to 20 characters")] //password is between 6 and 20 characters
         public string Password { get; set; }
         
-        [EmailAddress(ErrorMessage = "Not a valid email address")]
+        [EmailAddress]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Required")]
+        [Required(ErrorMessage = "Password do not match!")]
         public string VerifyPassword { get; set; }
     }
 }
