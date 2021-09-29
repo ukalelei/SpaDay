@@ -16,7 +16,8 @@ namespace SpaDay.ViewModels
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Password do not match!")]
+        [Required(ErrorMessage = "Password required")]
+        [Compare(nameof (Password), ErrorMessage = "Password do not match!")] //check two password are equal 
         public string VerifyPassword { get; set; }
     }
 }
